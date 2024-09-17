@@ -24,16 +24,11 @@ function Home() {
       const URL = `${Backend_URL}/user-details`;
       const response = await axios(URL, { withCredentials: true });
       console.log("Home user details", response);
-      if (
-        response.data.logout ||
-        response.logout ||
-        !response.data.success ||
-        !response.success
-      ) {
+      if (!response?.data?.success) {
         dispatch(logout());
         navigate("/login");
       } else {
-        dispatch(setUser(response.data.data));
+        dispatch(setUser(response?.data?.data));
       }
     } catch (err) {
       console.log(err);
