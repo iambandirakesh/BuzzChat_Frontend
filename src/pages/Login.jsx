@@ -30,7 +30,6 @@ function Login() {
       const response = await axios.post(URL, data, { withCredentials: true });
 
       if (response.data.success) {
-        console.log("from login page", response?.data);
         dispatch(setToken(response?.data?.token));
         localStorage.setItem("token", response?.data?.token);
         setData({

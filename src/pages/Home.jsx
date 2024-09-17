@@ -14,9 +14,8 @@ import Sidebar from "../components/Sidebar";
 import logo from "../assets/main_logo1.png";
 import io from "socket.io-client";
 function Home() {
-  console.log("Home");
   const user = useSelector((state) => state.user);
-  console.log("Online", user);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -25,7 +24,12 @@ function Home() {
       const URL = `${Backend_URL}/user-details`;
       const response = await axios(URL, { withCredentials: true });
       console.log("Home user details", response);
-      if (response.data.logout) {
+      if (
+        response.data.logout ||
+        response.logout ||
+        !response.data.success ||
+        !response.success
+      ) {
         dispatch(logout());
         navigate("/login");
       } else {
@@ -46,7 +50,6 @@ function Home() {
       },
     });
     socketConnection.on("onlineUser", (data) => {
-      console.log("OnlineUser", data);
       dispatch(setOnlineUser(data));
     });
     dispatch(setSocketConnection(socketConnection));

@@ -91,7 +91,7 @@ const MessagePage = () => {
       socketConnection.on("message-user", (data) => setDataUser(data));
 
       socketConnection.on("message", (data) => {
-        console.log("Received messages:", data);
+
         setAllMessage(data);
       });
 

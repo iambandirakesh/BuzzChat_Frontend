@@ -8,7 +8,7 @@ function ForgotPassword() {
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
   const handleForgotPasswordSubmit = async () => {
     const URL = `${Backend_URL}/reset-password`;
-    console.log(forgotPasswordEmail);
+
     const response = await axios.post(URL, {
       email: forgotPasswordEmail,
     });

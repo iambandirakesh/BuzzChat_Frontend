@@ -28,10 +28,10 @@ function RegisterPage() {
 
   const handleUploadPhoto = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
+
     if (!file) return;
     const cloudinaryPhoto = await uploadFile(file);
-    console.log(cloudinaryPhoto);
+
     setUploadPhoto(cloudinaryPhoto); // Set Cloudinary response here
     setData({ ...data, profile_pic: cloudinaryPhoto.secure_url }); // Save Cloudinary URL
     setUpload(true);
@@ -64,7 +64,7 @@ function RegisterPage() {
         email: data.email,
         name: data.name,
       });
-      console.log(response.data);
+
       if (response.data.success) {
         setData({
           name: "",
@@ -105,7 +105,6 @@ function RegisterPage() {
     setVerify(true);
     const URL = `${Backend_URL}/sent-verify-email`;
     try {
-      console.log(data.email);
       const response = await axios.post(URL, { email: data.email });
       if (response.data.success) {
         toast.success(response?.data?.message);

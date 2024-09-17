@@ -53,7 +53,6 @@ const EditUserDetails = ({ onClose, user }) => {
           profile_pic: uploadPhoto?.url || "",
         }));
       } catch (error) {
-        console.error("Error uploading photo:", error);
         toast.error("Failed to upload photo");
       }
     }
@@ -83,7 +82,6 @@ const EditUserDetails = ({ onClose, user }) => {
         toast.error(response.data.message || "Failed to update profile");
       }
     } catch (error) {
-      console.error("Error updating profile:", error);
       toast.error("Failed to update profile");
     }
   };

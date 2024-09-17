@@ -8,14 +8,14 @@ const Avatar = ({ userId, name, imageUrl, width, height }) => {
   let avatarName = "";
   if (name.length > 0) {
     const splitName = name?.split(" ");
-    console.log("Avatar Component - splitName:", splitName.length);
+
     if (splitName.length > 1 && splitName[1][0] !== undefined) {
       avatarName = splitName[0][0] + splitName[1][0];
     } else {
       avatarName = splitName[0][0];
     }
   }
-  console.log("Avatar Component - avatarName:", avatarName);
+
   const bgColor = [
     "bg-slate-200",
     "bg-teal-200",

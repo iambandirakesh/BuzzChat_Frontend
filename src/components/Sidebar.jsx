@@ -14,7 +14,7 @@ import { logout } from "../redux/userSlice";
 
 const Sidebar = () => {
   const user = useSelector((state) => state?.user);
-  console.log("1:40", user);
+
   const [editUserOpen, setEditUserOpen] = useState(false);
   const [allUser, setAllUser] = useState([]);
   const [openSearchUser, setOpenSearchUser] = useState(false);
@@ -29,8 +29,6 @@ const Sidebar = () => {
       socketConnection.emit("sidebar", user._id);
 
       socketConnection.on("conversation", (data) => {
-        console.log("conversation", data);
-
         const conversationUserData = data.map((conversationUser, index) => {
           if (
             conversationUser?.sender?._id === conversationUser?.receiver?._id
