@@ -23,8 +23,8 @@ function Home() {
   const fetchUserDetails = async () => {
     try {
       const URL = `${Backend_URL}/user-details`;
-      const response = await axios({ url: URL, withCredentials: true });
-      console.log(response);
+      const response = await axios(URL, { withCredentials: true });
+      console.log("Home user details", response);
       if (response.data.logout) {
         dispatch(logout());
         navigate("/login");

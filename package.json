@@ -47,5 +47,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.10"
-  }
+  },
+  "proxy": "https://your-hosted-backend-url.com"
 }
